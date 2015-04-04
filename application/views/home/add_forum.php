@@ -20,3 +20,4 @@
 <link rel="stylesheet" href="/assets/kindEditor/themes/default/default.css" />
 <script charset="utf-8" src="/assets/kindEditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="/assets/kindEditor/lang/zh_CN.js"></script>
+<script src="/assets/js/common.js" type="text/javascript"></script>

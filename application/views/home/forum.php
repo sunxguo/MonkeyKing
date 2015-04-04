@@ -69,3 +69,4 @@
 		</li>
 	</ul>
 </div>
+<script src="/assets/js/common.js" type="text/javascript"></script>

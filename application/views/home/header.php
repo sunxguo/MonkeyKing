@@ -7,7 +7,6 @@
 	<link rel="stylesheet" href="/assets/css/home.css" type="text/css"/>
     <script src="/assets/js/jquery.js" type="text/javascript"></script>
 	<script src="/assets/js/home.js" type="text/javascript"></script>
-	<script src="/assets/js/common.js" type="text/javascript"></script>
 	<script src="/assets/js/unslider.js" type="text/javascript"></script>
 </head>
 <body>
