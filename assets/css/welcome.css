@@ -1,0 +1,35 @@
+/* CSS Document */
+body {
+	background: #000;
+	border: 0;
+	font-family: "微软雅黑", "宋体";
+	font-size: 12px;
+	line-height: 22px;
+	color: #000;
+	display: block;
+}
+.top{
+	margin:20px 0 0 20px;
+}
+.top img{
+	width:100px;
+}
+.center{
+	width:50%;
+	position:fixed;
+	bottom:20%;
+	left:28%;
+	color:white;
+}
+.center h1{
+	font-size:4em;
+	font-weight:400px;
+}
+.center p{
+	font-size:1.5em;
+	line-height:40px;
+	margin-top:60px;
+}
+.bottom{
+	margin-top:50px;
+}

@@ -245,7 +245,7 @@ CREATE TABLE `user` (
   UNIQUE KEY `user_id_UNIQUE` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户';
 
-INSERT INTO user (`user_id`, `user_username`, `user_pwd`, `user_email`, `user_phone`, `user_avatar`, `user_gender`, `user_state`, `user_lastlogin_time`, `user_reg_time`, `user_birthday`, `user_grade`, `user_vip_grade`) VALUES (3, 'sunxguo', '4153a2e75da748519f0953a2d6a16c34', NULL, NULL, NULL, 0, 0, '2015-04-01 16:40:54', '2015-04-01 16:40:54', NULL, 1, 0);
+INSERT INTO user (`user_id`, `user_username`, `user_pwd`, `user_email`, `user_phone`, `user_avatar`, `user_gender`, `user_state`, `user_lastlogin_time`, `user_reg_time`, `user_birthday`, `user_grade`, `user_vip_grade`) VALUES (3, 'sunxguo', '4153a2e75da748519f0953a2d6a16c34', 'sunxguo@163.com', '18734920576', '/uploads/image/20150402/20150402154551_26993.jpg', 0, 0, '2015-04-01 16:40:54', '2015-04-01 16:40:54', NULL, 1, 0);
 
 
 #
@@ -260,9 +260,10 @@ CREATE TABLE `websiteconfig` (
   `value_websiteconfig` longtext,
   PRIMARY KEY (`id_websiteconfig`),
   UNIQUE KEY `id_websiteconfig_UNIQUE` (`id_websiteconfig`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='网站配置';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='网站配置';
 
 INSERT INTO websiteconfig (`id_websiteconfig`, `key_websiteconfig`, `value_websiteconfig`) VALUES (1, 'website_name', '网站名称');
-INSERT INTO websiteconfig (`id_websiteconfig`, `key_websiteconfig`, `value_websiteconfig`) VALUES (2, 'last_backup_time', '2015-04-02 11:12:43');
+INSERT INTO websiteconfig (`id_websiteconfig`, `key_websiteconfig`, `value_websiteconfig`) VALUES (2, 'last_backup_time', '2015-04-02 11:20:06');
+INSERT INTO websiteconfig (`id_websiteconfig`, `key_websiteconfig`, `value_websiteconfig`) VALUES (3, 'email', 'xxx@xx.com');
 
 

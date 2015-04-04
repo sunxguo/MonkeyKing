@@ -72,6 +72,10 @@ class Home extends CI_Controller {
 		$this->load->view('home/footer');
 	}
 	public function index(){
+		$data=array('title'=>'欢迎进入 MNT Lab');
+		$this->load->view('home/welcome',$data);
+	}
+	public function homepage(){
 		$data=array(
 			'column'=>$this->commongetdata->getPositions('index',true),
 			'columnType'=>$this->commongetdata->getAllColumnType('english')
