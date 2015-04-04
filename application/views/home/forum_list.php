@@ -14,10 +14,13 @@
 					<a href="/home/forum?id=<?php echo $item->forum_id;?>"><?php echo $item->forum_title;?></a>
 				</div>
 				<div class="author">
-					<a href="" target="_blank"><?php echo $item->user_username;?></a>
+					<a href="#"><?php echo $item->user_username;?></a>
 					<span>于 <?php echo $item->forum_create_time;?> 发表 |</span>
-					<a href="" target="_blank">孙行者</a>
-					<span>于 2015-03-06 06:11 最后回复</span>
+					<?php if(isset($item->lastComment)):?>
+					<a href="#"><?php echo $item->lastComment->user_username;?></a>
+					<span>于 <?php echo $item->lastComment->comment_time?> 最后回复</span>
+					<?php else:?>暂无回复
+					<?php endif;?>
 				</div>
 			</div>
 			<div class="reply-num fr">

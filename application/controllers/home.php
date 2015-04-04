@@ -152,6 +152,17 @@ class Home extends CI_Controller {
 			"forums"=>$this->commongetdata->getData($condition),
 			"column"=>$this->commongetdata->getColumn($_GET['id'])
 		);
+		foreach($data["forums"] as $item){
+			$commentCondition=array(
+				'table'=>'comment',
+				'result'=>'data',
+				'where'=>array('comment_to_type'=>1,'comment_to_id'=>$item->forum_id),
+				'join'=>array('user'=>'user.user_id=comment.comment_user_id'),
+				'order_by'=>array('comment_time'=>'DESC')
+			);
+			$comments=$this->commongetdata->getData($commentCondition);
+			if(sizeof($comments)>0) $item->lastComment=$comments[0];
+		}
 		$data=array_merge($data,$pageInfo);
 		$this->homeBaseHandler('论坛列表','forum_list','forum_list',$data);
 	}

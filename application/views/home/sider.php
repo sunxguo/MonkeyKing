@@ -1,7 +1,7 @@
 <div class="mainleft">
 	<?php if(isset($_SESSION['userid'])):?>
 	<h2>
-		<a href="/home/userCenter" style="color:red;">用户中心</a>
+		<a href="/home/userCenter" >用户中心</a>
 		<a href="/home/logout" style="font-size:12px;color:#434343;text-decoration:underline;">退出</a>
 	</h2>
 	<?php else:?>
