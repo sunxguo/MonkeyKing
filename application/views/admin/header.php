@@ -13,7 +13,7 @@
 <body>
     <div class="header-cms">
 		<a  class="km-logo" href="">
-            <img title="<?php echo $websiteName;?>" class="logo-cms" src="/assets/images/cms/logo-cms.png" alt="网站logo" />
+            <img title="<?php echo $websiteName;?>" class="logo-cms" src="/assets/images/cms/cms-logo.png" alt="网站logo" />
 		</a>
         <ul class="menu-cms">
             <li class="name">

@@ -24,8 +24,8 @@
 				</div>
 			</div>
 			<div class="reply-num fr">
-				<div title="浏览量"><?php echo $item->forum_visits;?></div>
-				<div title="回复量">0</div>
+				<div title="浏览量">浏览:<?php echo $item->forum_visits;?></div>
+				<div title="回复量">回复:<?php echo $item->commentNum;?></div>
 			</div>
 		</li>
 		<?php endforeach;?>

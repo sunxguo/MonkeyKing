@@ -69,7 +69,7 @@ class Home extends CI_Controller {
 			)
 		);
 		$this->load->view('home/'.$view,$data);
-		$this->load->view('home/footer');
+		$this->load->view('home/footer',array('visits'=>$this->commongetdata->getWebsiteConfig('visits')));
 	}
 	public function index(){
 		$data=array('title'=>'欢迎进入 MNT Lab');
@@ -80,6 +80,7 @@ class Home extends CI_Controller {
 			'column'=>$this->commongetdata->getPositions('index',true),
 			'columnType'=>$this->commongetdata->getAllColumnType('english')
 		);
+		$this->commongetdata->updateVisit('websiteconfig');
 		$this->homeBaseHandler('首页','index','index',$data);
 	}
 	public function columnList(){
@@ -112,6 +113,7 @@ class Home extends CI_Controller {
 	public function essay(){
 		$essay=$this->commongetdata->getEssay($_GET['id']);
 		$column=$this->commongetdata->getColumn($essay->essay_column);
+		$this->commongetdata->updateVisit('essay',$_GET['id']);
 		$this->homeBaseHandler('文章','essay','essay',array("essay"=>$essay,"column"=>$column));
 	}
 	public function imageList(){
@@ -162,6 +164,7 @@ class Home extends CI_Controller {
 			);
 			$comments=$this->commongetdata->getData($commentCondition);
 			if(sizeof($comments)>0) $item->lastComment=$comments[0];
+			$item->commentNum=sizeof($comments);
 		}
 		$data=array_merge($data,$pageInfo);
 		$this->homeBaseHandler('论坛列表','forum_list','forum_list',$data);
@@ -197,6 +200,7 @@ class Home extends CI_Controller {
 			$item->subComments=$this->commongetdata->getData($commentCondition);
 		}
 		$data=array_merge($data,$pageInfo);
+		$this->commongetdata->updateVisit('forum',$_GET['id']);
 		$this->homeBaseHandler('帖子','forum','forum',$data);
 	}
 	public function addForum(){

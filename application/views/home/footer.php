@@ -6,7 +6,7 @@
 			<dd>Copyright©:Office of Planning and Policy Research</dd>
 		</dl>
 		<div class="visits">
-			总访问量：0人次<!--<br>当前在线：0人次<br>--><br>
+			总访问量：<?php echo $visits;?>人次<!--<br>当前在线：0人次<br>--><br>
 			<a href="/admin/login">后台入口</a><br>
 		</div>
 		<div class="link"><a href="/home/essay?id=相关链接">相关链接</a></div>

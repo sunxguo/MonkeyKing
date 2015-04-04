@@ -191,17 +191,58 @@ class CommonGetData{
 		);
 		return $this->getData($condition);
 	}
+	/**
+	 * 获取数据库信息
+	 * return array
+	 */
 	public function getData($condition){
 		return $this->CI->dbHandler->selectData($condition);
 	}
 	/**
-	 * 获取一条信息
+	 * 获取一条数据库信息
 	 * return object
 	 */
 	public function getOneData($condition){
 		if(!isset($condition['result'])) $condition['result']='data';
 		$data=$this->CI->dbHandler->selectData($condition);
 		return $data[0];
+	}
+	/**
+	 * 更新数据库信息
+	 * return int
+	 */
+	public function updateData($condition){
+		return $this->CI->dbHandler->updateData($condition);
+	}
+	/**
+	 * 更新访问量 essay,image,forum,websiteconfig
+	 * return int
+	 */
+	public function updateVisit($table,$id=0){
+		$condition=array('table'=>$table);
+		switch($table){
+			case 'essay':
+				$condition['where']=array('essay_id'=>$id);
+				$data=$this->getOneData($condition);
+				$condition['data']=array('essay_visits'=>$data->essay_visits+1);
+			break;
+			case 'image':
+				$condition['where']=array('image_id'=>$id);
+				$data=$this->getOneData($condition);
+				$condition['data']=array('image_visits'=>$data->image_visits+1);
+			break;
+			case 'forum':
+				$condition['where']=array('forum_id'=>$id);
+				$data=$this->getOneData($condition);
+				$condition['data']=array('forum_visits'=>$data->forum_visits+1);
+			break;
+			case 'websiteconfig':
+				$condition['where']=array('key_websiteconfig'=>'visits');
+				$data=$this->getOneData($condition);
+				$condition['data']=array('value_websiteconfig'=>$data->value_websiteconfig+1);
+			break;
+		}
+		return $this->updateData($condition);
 	}
 	public function getEssay($id){
 		$condition=array(
