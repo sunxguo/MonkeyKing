@@ -40,4 +40,5 @@
 		<input onchange="return uploadAvatar()" name="image" type="file" id="file" style="display:none;" accept="image/*">
 	</form>
 </div>
+<script src="/assets/js/common.js" type="text/javascript"></script>
 <script charset="utf-8" src="/assets/js/jquery.form.js"></script>
