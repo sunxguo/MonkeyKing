@@ -73,6 +73,10 @@ class Common extends CI_Controller {
 				);
 			break;
 			case "forum":
+				if (strcmp($_SESSION["usertype"], "admin")==0) {
+					echo json_encode(array("result"=>"failed","message"=>"管理员账号不可以发帖！请先退出"));
+					return false;
+				}
 				$table="forum";
 				$info=array(
 					"forum_column"=>$data->column_id,
@@ -85,6 +89,10 @@ class Common extends CI_Controller {
 				);
 			break;
 			case "comment":
+				if (strcmp($_SESSION["usertype"], "admin")==0) {
+					echo json_encode(array("result"=>"failed","message"=>"管理员账号不可以回复！请先退出"));
+					return false;
+				}
 				$table="comment";
 				$info=array(
 					"comment_content"=>$data->content,
@@ -130,6 +138,10 @@ class Common extends CI_Controller {
 			case 'forum':
 				$condition['table']="forum";
 				$condition['where']=array("forum_id"=>$data->id);
+			break;
+			case 'comment':
+				$condition['table']="comment";
+				$condition['where']=array("comment_id"=>$data->id);
 			break;
 			case 'user':
 				$condition['table']="user";

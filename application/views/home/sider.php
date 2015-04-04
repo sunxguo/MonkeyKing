@@ -1,4 +1,14 @@
 <div class="mainleft">
+	<?php if(isset($_SESSION['userid'])):?>
+	<h2>
+		<a href="/home/userCenter" style="color:red;">用户中心</a>
+		<a href="/home/logout" style="font-size:12px;color:#434343;text-decoration:underline;">退出</a>
+	</h2>
+	<?php else:?>
+	<h2>
+		<a href="/home/login">登录</a>
+	</h2>
+	<?php endif;?>
 	<?php foreach($sider as $item):?>
 	<?php if(sizeof($item->subColumns)>0):?>
 	<h2><?php echo $item->column_name?></h2>

@@ -8,7 +8,7 @@ class Home extends CI_Controller {
 		$this->load->model("dbHandler");
 	}
 	public function checkUserLogin(){
-		if (!checkLogin() || strcmp($_SESSION["usertype"], "user")) {
+		if (!checkLogin()) {
 			$this->load->view('redirect',array("url"=>"/home/login","info"=>"请先登录!"));
 			return false;
 		}else return true;
@@ -34,7 +34,7 @@ class Home extends CI_Controller {
 					$_SESSION['username']=$info[0]->user_username;
 					$_SESSION['userid']=$info[0]->user_id;
 					$_SESSION['usertype']="user";
-					$this->load->view('redirect',array("url"=>"/home/index"));
+					$this->load->view('redirect',array("url"=>"/home/homepage"));
 				}
 				else{
 					$this->load->view('redirect',array("info"=>"密码错误"));
@@ -51,7 +51,7 @@ class Home extends CI_Controller {
 		unset($_SESSION["username"]);
 		unset($_SESSION["userid"]);
 		unset($_SESSION["usertype"]);
-		$this->load->view('redirect',array("url"=>"/admin/login"));
+		$this->load->view('redirect',array("url"=>"/home/login"));
 	}
 	public function homeBaseHandler($title,$siderName,$view,$data){
 		$websiteName=$this->commongetdata->getWebsiteConfig("website_name");
@@ -197,6 +197,10 @@ class Home extends CI_Controller {
 	}
 	public function userCenter(){
 		$this->checkUserLogin();
+		if (strcmp($_SESSION["usertype"], "admin")==0) {
+			$this->load->view('redirect',array("info"=>"管理员账号不可访问用户中心!"));
+			return false;
+		}
 		$data=array('user'=>$this->commongetdata->getUser($_SESSION['userid']));
 		$this->homeBaseHandler('用户中心','userCenter','userCenter',$data);
 	}

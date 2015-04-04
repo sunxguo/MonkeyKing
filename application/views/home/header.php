@@ -25,7 +25,7 @@
 				<a href="" style="display:inline-block;height:16px;">   </a>
 			</p>
 			<div class="nav">
-				<a href="/">首页</a>  |
+				<a href="/home/homepage">首页</a>  |
 				<?php $amount=sizeof($topBar);
 				for($i=0;$i<$amount;$i++):
 				if($topBar[$i]->column_display==1):?>

@@ -58,13 +58,14 @@
 						<?php echo $columns[$cont->forum_column]->column_name;?>
 					</a>
 				</td>
-				<td><a href="/home/forum?id=<?php echo $cont->forum_id;?>"><?php echo $cont->forum_title;?></a></td>
+				<td><a href="/home/forum?id=<?php echo $cont->forum_id;?>" target="_blank"><?php echo $cont->forum_title;?></a></td>
 				<td><?php echo $cont->forum_create_time;?></td>
 				<td><?php echo $cont->forum_lastmodify_time;?></td>
 				<td><?php echo $cont->forum_visits;?></td>
 				<td><?php //echo $contentMark[$cont->forum_mark];?></td>
 				<td>
 					<a href="/home/forum?id=<?php echo $cont->forum_id;?>" target="_blank">查看</a>
+					<a href="/admin/contentList?type=comment&forum=<?php echo $cont->forum_id;?>">查看评论</a>
 					<a href="javascript:delForum('<?php echo $cont->forum_id;?>','确定删除该帖子【<?php echo $cont->forum_title;?>】？','成功删除帖子【<?php echo $cont->forum_title;?>】！正在刷新...');">删除</a>
 				</td>
 			</tr>

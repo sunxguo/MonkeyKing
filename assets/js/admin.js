@@ -33,6 +33,12 @@ function delForum(currentId,confirmMsg,successMsg){
 	forum.id = currentId;
 	dataHandler("del","forum",forum,null,confirmMsg,closeWait(),successMsg,true);
 }
+function delComment(currentId,confirmMsg,successMsg){
+	showWait();
+	var comment = new Object(); 
+	comment.id = currentId;
+	dataHandler("del","comment",comment,null,confirmMsg,closeWait(),successMsg,true);
+}
 function delUser(currentId,confirmMsg,successMsg){
 	showWait();
 	var user = new Object(); 
@@ -67,6 +73,12 @@ function selectUser(baseUrl){
 	var extUrl="";
 	if($("#state").val()!=0) extUrl+="&state="+$("#state").val();
 	if($("#gender").val()!=0) extUrl+="&gender="+$("#gender").val();
+	if($("#keyword").val()!="") extUrl+="&search="+$("#keyword").val();
+	location.href=baseUrl+extUrl;
+}
+function selectComment(baseUrl){
+	var extUrl="";
+	if($("#forum").val()!='') extUrl+="&forum="+$("#forum").val();
 	if($("#keyword").val()!="") extUrl+="&search="+$("#keyword").val();
 	location.href=baseUrl+extUrl;
 }

@@ -109,12 +109,18 @@ class Admin extends CI_Controller {
 			$condition['where']=array($type.'_column'=>$_GET['column']);
 			$baseUrl.='&column='.$_GET['column'];
 		}
+		if(isset($_GET['forum'])&& is_numeric($_GET['forum'])){
+			$condition['where']=array($type.'_to_id'=>$_GET['forum'],'comment_to_type'=>1);
+			$condition['join']=array('forum'=>'forum.forum_id=comment.comment_to_id','user'=>'user.user_id=comment.comment_user_id');
+			$baseUrl.='&forum='.$_GET['forum'];
+		}
 		if(isset($_GET['state'])&& is_numeric($_GET['state'])){
 			$condition['where']=array($type.'_state'=>$_GET['state']);
 			$baseUrl.='&state='.$_GET['state'];
 		}
 		if(isset($_GET['search'])){
-			$condition['like']=array($type.'_title'=>$_GET['search']);
+			if($type=='comment') $condition['like']=array($type.'_content'=>$_GET['search']);
+			else $condition['like']=array($type.'_title'=>$_GET['search']);
 			$baseUrl.='&search='.$_GET['search'];
 		}
 		$condition['result']="count";
@@ -123,7 +129,8 @@ class Admin extends CI_Controller {
 		$condition['result']="data";
 		if($type=='forum') $condition['join']=array('user'=>'user_id=forum_author_id');
 		$condition['limit']=$pageInfo['limit'];
-		$condition['order_by']=array($type.'_lastmodify_time'=>'DESC');
+		if($type=='comment') $condition['order_by']=array($type.'_time'=>'DESC');
+		else $condition['order_by']=array($type.'_lastmodify_time'=>'DESC');
 		$data=array(
 			"columns"=>$this->commongetdata->getColumns(array('essayList','essay','imageList','forumList'),true),
 			"contents"=>$this->commongetdata->getData($condition),
